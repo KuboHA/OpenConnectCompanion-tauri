@@ -2,5 +2,9 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
+  // Fix for WebKitGTK rendering issues on Linux (e.g. EGL_BAD_PARAMETER)
+  #[cfg(target_os = "linux")]
+  std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+
   app_lib::run();
 }
