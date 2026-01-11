@@ -19,7 +19,7 @@ jobs:
         include:
           - platform: 'macos-latest' # Apple Silicon
             args: '--target aarch64-apple-darwin'
-          - platform: 'macos-13' # Intel Mac
+          - platform: 'macos-15-intel' # Intel Mac
             args: '--target x86_64-apple-darwin'
           - platform: 'ubuntu-22.04'
             args: ''
@@ -40,7 +40,7 @@ jobs:
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin' || matrix.platform == 'macos-13' && 'x86_64-apple-darwin' || '' }}
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin' || matrix.platform == 'macos-15-intel' && 'x86_64-apple-darwin' || '' }}
 
       - name: install dependencies (ubuntu)
         if: matrix.platform == 'ubuntu-22.04'
@@ -69,10 +69,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: 'arch'
-            container: 'archlinux:latest'
-            pkg_manager: 'pacman'
-            args: ''  
           - name: 'alpine'
             container: 'alpine:latest'
             pkg_manager: 'apk'
@@ -82,19 +78,12 @@ jobs:
     container: ${{ matrix.container }}
     
     steps:
-      - name: install dependencies (arch)
-        if: matrix.pkg_manager == 'pacman'
-        run: |
-          pacman -Syu --noconfirm
-          pacman -S --noconfirm base-devel webkit2gtk curl wget file openssl appmenu-gtk-module gtk3 libappindicator-gtk3 librsvg libvips nodejs npm git rustup
-          rustup default stable
-
       - name: install dependencies (alpine)
         if: matrix.pkg_manager == 'apk'
         run: |
           echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
           apk update
-          apk add --no-cache build-base webkit2gtk-4.1-dev openssl-dev curl wget file rust cargo nodejs npm gtk+3.0-dev librsvg-dev git bash zlib-dev
+          apk add --no-cache build-base webkit2gtk-4.1-dev openssl-dev curl wget file rust cargo nodejs npm gtk+3.0-dev librsvg-dev git bash zlib-dev gcompat
 
       - uses: actions/checkout@v4
 
