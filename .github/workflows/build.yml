@@ -130,7 +130,7 @@ jobs:
           
           # Create APKBUILD
           cat > /home/builder/openconnect-companion/APKBUILD << EOF
-          # Maintainer: OpenConnectCompanion
+          # Maintainer: OpenConnectCompanion <jakub@schalek.dev>
           pkgname=openconnect-companion
           pkgver=${{ steps.version.outputs.version }}
           pkgrel=0
@@ -139,12 +139,13 @@ jobs:
           arch="x86_64"
           license="GPL-3.0"
           depends="webkit2gtk-4.1 gtk+3.0 librsvg"
+          install_if=""
           source=""
-          options="!check"
+          options="!check net"
           
           package() {
-              install -Dm755 "\$startdir/openconnect-companion-tauri" "\$pkgdir/usr/bin/openconnect-companion-tauri"
-              install -Dm644 "\$startdir/openconnect-companion.desktop" "\$pkgdir/usr/share/applications/openconnect-companion.desktop"
+              install -Dm755 "\$srcdir/../openconnect-companion-tauri" "\$pkgdir/usr/bin/openconnect-companion-tauri"
+              install -Dm644 "\$srcdir/../openconnect-companion.desktop" "\$pkgdir/usr/share/applications/openconnect-companion.desktop"
           }
           EOF
           
