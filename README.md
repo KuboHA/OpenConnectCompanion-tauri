@@ -6,7 +6,7 @@ It aims to provide a feature set identical to **Garmin Connect™**, while stayi
 
 ## Installation
 
-The easiest way to install OpenConnect Companion is to download the latest release for your operating system from the [GitHub Releases page](https://github.com/janmarkus-dev/OpenConnectCompanion/releases).
+The easiest way to install OpenConnect Companion is to download the latest release for your operating system from the [GitHub Releases page](https://github.com/KuboHA/OpenConnectCompanion-tauri/releases).
 
 ### Windows
 1. Download the `.msi` or `.exe` installer (e.g., `OpenConnect_Companion_x.x.x_x64_en-US.msi`).
