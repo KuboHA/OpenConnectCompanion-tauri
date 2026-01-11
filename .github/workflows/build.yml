@@ -46,7 +46,7 @@ jobs:
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev rpm
+          sudo apt-get install -y libwebkit2gtk-4.1-dev librsvg2-dev build-essential curl wget file libssl-dev libgtk-3-dev libayatana-appindicator3-dev rpm
 
       - name: install frontend dependencies
         run: npm ci
@@ -92,8 +92,9 @@ jobs:
       - name: install dependencies (alpine)
         if: matrix.pkg_manager == 'apk'
         run: |
+          echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
           apk update
-          apk add --no-cache build-base webkit2gtk-dev openssl-dev curl wget file rust cargo nodejs npm gtk+3.0-dev librsvg-dev git bash zlib-dev
+          apk add --no-cache build-base webkit2gtk-4.1-dev openssl-dev curl wget file rust cargo nodejs npm gtk+3.0-dev librsvg-dev git bash zlib-dev
 
       - uses: actions/checkout@v4
 
