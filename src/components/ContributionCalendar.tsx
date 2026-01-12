@@ -131,7 +131,7 @@ export default function ContributionCalendar() {
         </div>
         <div className="flex flex-col gap-1">
           <span className="text-xs text-[var(--color-text-secondary)]">Current Streak</span>
-          <span className="text-xl font-bold text-green-600 dark:text-green-400">
+          <span className="text-xl font-bold text-green-400">
             {streakInfo?.current_streak ?? 0} days
           </span>
         </div>
