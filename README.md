@@ -20,6 +20,8 @@ The easiest way to install OpenConnect Companion is to download the latest relea
 We provide AppImage and Debian packages:
 - **AppImage**: Download the `.AppImage` file, make it executable (`chmod +x OpenConnect_Companion_*.AppImage`), and run it.
 - **Debian/Ubuntu**: Download the `.deb` file and install it using `sudo dpkg -i OpenConnect_Companion_*.deb` or your package manager.
+- **Fedora, Centos, Suse, Mandrake, Red Hat**: Download the `.rpm` file and install it using `sudo yum install OpenConnect_Companion_*.rpm`
+- **Alpine Linux**: Download the `.apk` file and install it using `doas apk add OpenConnect_Companion_*.apk --allow-untrusted`
 
 ## Features
 
