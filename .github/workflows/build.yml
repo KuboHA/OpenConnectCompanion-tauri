@@ -71,7 +71,7 @@ jobs:
       matrix:
         include:
           - name: 'alpine'
-            container: 'alpine:latest'
+            container: 'alpine:edge'
             pkg_manager: 'apk'
             args: ''
 
