@@ -1,4 +1,4 @@
-# OpenConnect Companion (Tauri)
+# OpenConnect Companion
 
 **OpenConnectCompanion-Tauri** is a cross-platform native desktop application for synchronizing, analyzing, and visualizing data from Garmin smartwatches, cycling computers, and Strava Activities.
 
@@ -42,8 +42,14 @@ OpenConnect Companion uses standard impulse-response models to estimate your fit
 
 ### Training Stress Score (TSS)
 TSS quantifies the workload of a single session. Since power meters are not always available, we estimate TSS using **Heart Rate Reserve (HRR)**:   
+
+```math
 $$ \text{HRR} = \frac{\text{Avg HR} - \text{Resting HR}}{\text{Max HR} - \text{Resting HR}} $$
+```
+
+```math
 $$ \text{TSS} = (\text{Duration (hours)} \times \text{HRR}^2) \times 100 $$
+```
 
 The specific stress score (TSS) for each individual workout is calculated using your Heart Rate Reserve (Max HR - Resting HR). If your resting heart rate drops as you get fitter, you should update it in Settings.
 
